@@ -8,4 +8,4 @@ const getClient = (): AxiosInstance => {
   return axiosInstance;
 };
 
-export { getClient };
+export default getClient;

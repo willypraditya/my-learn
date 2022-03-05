@@ -9,9 +9,10 @@ module.exports = {
       version: 'detect',
     },
   },
-  extends: ['plugin:react/recommended', 'standard', 'prettier'],
+  extends: ['plugin:react/recommended', 'airbnb', 'airbnb/hooks', 'airbnb-typescript', 'prettier'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
+    project: ['./tsconfig.eslint.json'],
     ecmaFeatures: {
       jsx: true,
     },
@@ -24,6 +25,13 @@ module.exports = {
     'no-use-before-define': 'off',
     'space-before-function-paren': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
+    'react/function-component-definition': [
+      2,
+      {
+        namedComponents: 'arrow-function',
+        unnamedComponents: 'arrow-function',
+      },
+    ],
     semi: [2, 'always'],
     'no-unused-vars': 'warn',
   },
