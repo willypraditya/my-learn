@@ -9,3 +9,11 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+.ant-collapse-header {
+  margin-left: -15px !important;
+}
+
+.ant-collapse-content-box {
+  padding: 0px !important;
+}

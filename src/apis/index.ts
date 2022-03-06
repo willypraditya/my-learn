@@ -1,4 +1,4 @@
-import { ClassesResponse } from 'types/classes';
+import { ClassDetailResponse, ClassesResponse } from 'types/classes';
 
 import getClient from './client';
 
@@ -9,4 +9,13 @@ const getAvailableClasses = async (): Promise<ClassesResponse> => {
   return response.data;
 };
 
-export default getAvailableClasses;
+const getClass = async (classId: number): Promise<ClassDetailResponse> => {
+  const response = await client.get('learning-class', {
+    params: {
+      id: classId,
+    },
+  });
+  return response.data;
+};
+
+export { getAvailableClasses, getClass };
