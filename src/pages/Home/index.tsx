@@ -13,7 +13,7 @@ const Home = (): ReactElement => {
   const { data, modalClassId, modalVisible, setModalVisible, onClassClick } = useHomeHooks();
 
   return (
-    <div className={styles.home}>
+    <div data-testid="home" className={styles.home}>
       <Typography className={styles.home__title}>MyLearn</Typography>
       <div className={styles.home__content}>
         {data &&
