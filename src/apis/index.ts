@@ -1,4 +1,5 @@
 import { ClassDetailResponse, ClassesResponse } from 'types/classes';
+import { Message } from 'types/common';
 
 import getClient from './client';
 
@@ -18,4 +19,21 @@ const getClass = async (classId: number): Promise<ClassDetailResponse> => {
   return response.data;
 };
 
-export { getAvailableClasses, getClass };
+const postRegisterClass = async (payload: { classId: number; fullName: string; email: string }): Promise<Message> => {
+  const response = await client.post(
+    'join-class',
+    {
+      classId: payload.classId,
+      attendeeFullName: payload.fullName,
+      attendeeEmail: payload.email,
+    },
+    {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    },
+  );
+  return response.data;
+};
+
+export { getAvailableClasses, getClass, postRegisterClass };

@@ -1,0 +1,11 @@
+.registrationForm {
+  &__title {
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  &__form {
+    &__submit {
+      width: 100%;
+    }
+  }
+}

@@ -1,9 +1,10 @@
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 
 import { Collapse, Modal, Spin, Typography } from 'antd';
 
 import { ClassDetailMentor } from 'types/classes';
 
+import RegistrationForm from './components/RegistrationForm';
 import useClassModalHooks from './hooks';
 import styles from './index.module.scss';
 
@@ -25,7 +26,9 @@ const ClassModal = (props: {
       onOk={() => setModalVisible(false)}
       onCancel={() => setModalVisible(false)}
       destroyOnClose
+      centered
       className={styles.classModal}
+      footer={null}
     >
       {loading ? (
         <div style={{ textAlign: 'center' }}>
@@ -48,6 +51,9 @@ const ClassModal = (props: {
                 </Panel>
               ))}
             </Collapse>
+          </div>
+          <div className={styles.classModal__registration}>
+            <RegistrationForm classId={classId} />
           </div>
         </>
       )}
