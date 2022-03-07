@@ -7,7 +7,8 @@ Deployment URL: https://my-learn-wheat.vercel.app/
 - SASS with BEM naming methodology (http://getbem.com/naming/)
 - AntDesign UI Framework (https://ant.design/components/overview/)
 - ESlint with Airbnb Config
-- Husky for Pre-Commit hooks
+- Husky for Pre-Commit hooks (https://typicode.github.io/husky/#/)
+- MSW for API mocking (https://mswjs.io/)
 - Vercel for deployment
 
 #### How to run
