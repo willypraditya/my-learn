@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+import { Modal } from 'antd';
+
 import { getAvailableClasses } from '@apis/index';
 
 import { ClassesResponse } from 'types/classes';
@@ -13,8 +15,12 @@ const useHomeHooks = () => {
   useEffect(() => {
     const fetchClasses = async () => {
       setLoading(true);
-      const classesData = await getAvailableClasses();
-      setData(classesData);
+      try {
+        const classesData = await getAvailableClasses();
+        setData(classesData);
+      } catch (error: any) {
+        Modal.error({ title: error.response.data.message });
+      }
       setLoading(false);
     };
 
