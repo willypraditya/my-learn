@@ -11,5 +11,4 @@ if [ ! -f "$ENV" ]; then
     echo "REACT_APP_API_URL=https://baee0c5d-15e7-45e2-ae1b-392ba74406a9.mock.pstmn.io/" >> .env
 fi
 
-npm run build
-serve -s build -p 80
+npm run test
