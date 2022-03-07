@@ -21,6 +21,7 @@ const ClassModal = (props: {
 
   return (
     <Modal
+      data-testid="class-modal"
       title={loading ? 'Loading...' : data?.name}
       visible={modalVisible}
       onOk={() => setModalVisible(false)}
