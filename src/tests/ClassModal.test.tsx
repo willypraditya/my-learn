@@ -1,47 +1,24 @@
-import { fireEvent, render } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import server from 'mocks/server';
-import { rest } from 'msw';
+import { render } from '@testing-library/react';
 
 import ClassModal from '@components/ClassModal';
-import RegistrationForm from '@components/ClassModal/components/RegistrationForm';
 
-test('renders ClassModal', () => {
+test('renders success ClassModal with classId 1', async () => {
   const setModalVisible = jest.fn();
 
-  const { getByTestId } = render(<ClassModal classId={undefined} modalVisible setModalVisible={setModalVisible} />);
-  expect(getByTestId('class-modal')).toBeInTheDocument();
+  const { findByText } = render(<ClassModal classId={1} modalVisible setModalVisible={setModalVisible} />);
+  expect(await findByText('Belajar Javascript Dasar bersama Andi dan Budi')).toBeInTheDocument();
 });
 
-test('renders RegistrationForm', () => {
-  const { getByTestId } = render(<RegistrationForm classId={undefined} />);
-  expect(getByTestId('registration-form')).toBeInTheDocument();
+test('renders success ClassModal with classId 2', async () => {
+  const setModalVisible = jest.fn();
+
+  const { findByText } = render(<ClassModal classId={2} modalVisible setModalVisible={setModalVisible} />);
+  expect(await findByText('Belajar CSS Dasar bersama Caca dan Dian')).toBeInTheDocument();
 });
 
-test('RegistrationForm success register', async () => {
-  const { getByTestId, findByText } = render(<RegistrationForm classId={1} />);
-  fireEvent.change(await getByTestId('registration-form-name-input'), { target: { value: 'Full Name' } });
-  fireEvent.change(await getByTestId('registration-form-email-input'), { target: { value: 'Email' } });
-  userEvent.click(await getByTestId('registration-form-submit'));
-  expect(await findByText('You are successfully registered')).toBeInTheDocument();
-});
+test('renders error ClassModal with classId 3', async () => {
+  const setModalVisible = jest.fn();
 
-test('RegistrationForm error register', async () => {
-  server.use(
-    rest.post(`${process.env.REACT_APP_API_URL}join-class`, (req, res, ctx) =>
-      res(
-        ctx.status(500),
-        ctx.json({
-          code: 400,
-          message: 'Could not join',
-        }),
-      ),
-    ),
-  );
-
-  const { getByTestId, findByText } = render(<RegistrationForm classId={1} />);
-  fireEvent.change(await getByTestId('registration-form-name-input'), { target: { value: 'Full Name' } });
-  fireEvent.change(await getByTestId('registration-form-email-input'), { target: { value: 'Email' } });
-  userEvent.click(await getByTestId('registration-form-submit'));
-  expect(await findByText('Could not join')).toBeInTheDocument();
+  const { findByText } = render(<ClassModal classId={3} modalVisible setModalVisible={setModalVisible} />);
+  expect(await findByText('Class not found')).toBeInTheDocument();
 });
