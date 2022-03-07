@@ -1,5 +1,6 @@
 ### MyLearn
 
+Deployment URL: https://my-learn-wheat.vercel.app/
 #### Tech Stack
 - ReactJs
 - TypeScript
@@ -35,3 +36,6 @@
 └── utils
     Reusable helper functions
 ```
+
+#### Problems
+- POST join-class endpoint always returns error.
