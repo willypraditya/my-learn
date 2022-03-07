@@ -11,10 +11,10 @@ const RegistrationForm = (props: { classId: number | undefined }) => {
       <Typography className={styles.registrationForm__title}>Registration</Typography>
       <Form className={styles.registrationForm__form} form={form} layout="vertical" onFinish={registerClass}>
         <Form.Item name="fullName" label="Full Name">
-          <Input />
+          <Input data-testid="registration-form-name-input" />
         </Form.Item>
         <Form.Item name="email" label="Email">
-          <Input />
+          <Input data-testid="registration-form-email-input" />
         </Form.Item>
         <Form.Item>
           {loading ? (
@@ -22,7 +22,12 @@ const RegistrationForm = (props: { classId: number | undefined }) => {
               <Spin />
             </div>
           ) : (
-            <Button className={styles.registrationForm__form__submit} type="primary" htmlType="submit">
+            <Button
+              data-testid="registration-form-submit"
+              className={styles.registrationForm__form__submit}
+              type="primary"
+              htmlType="submit"
+            >
               Register
             </Button>
           )}

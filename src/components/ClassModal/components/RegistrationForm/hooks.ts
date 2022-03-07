@@ -21,7 +21,7 @@ const useRegistrationFormHooks = (classId: number | undefined) => {
       }
       setLoading(false);
     } catch (error: any) {
-      Modal.error({ title: error.message });
+      Modal.error({ title: error.response.data.message });
       setLoading(false);
     }
   };
