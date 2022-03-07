@@ -18,11 +18,10 @@ const useClassModalHooks = (classId: number | undefined) => {
           const classData = await getClass(classId);
           setData(classData);
         }
-        setLoading(false);
       } catch (error: any) {
         Modal.error({ title: error.response.data.message });
-        setLoading(false);
       }
+      setLoading(false);
     };
     fetchClass();
 

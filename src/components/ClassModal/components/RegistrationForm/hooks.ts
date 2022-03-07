@@ -19,11 +19,10 @@ const useRegistrationFormHooks = (classId: number | undefined) => {
         });
         Modal.success({ title: response.message });
       }
-      setLoading(false);
     } catch (error: any) {
       Modal.error({ title: error.response.data.message });
-      setLoading(false);
     }
+    setLoading(false);
   };
 
   return { loading, form, registerClass };
